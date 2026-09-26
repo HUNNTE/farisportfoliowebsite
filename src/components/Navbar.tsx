@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
           : 'bg-white/80 backdrop-blur-sm border-b border-gray-100 py-3.5 sm:py-4'
       }`}
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Brand / Monogram */}
         <a
           href="#home"
