@@ -48,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
       id="home"
       className="pt-24 pb-12 sm:pt-32 sm:pb-20 md:pt-36 md:pb-24 border-b border-gray-100"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6">
         {/* Unboxed Metadata Header */}
         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs font-mono text-gray-500 mb-5 sm:mb-6">
           <span className="font-semibold text-black">{PERSONAL_INFO.status}</span>
