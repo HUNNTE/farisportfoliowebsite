@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aulia Azmi Al Farisy | Fullstack Engineer Portfolio</title>
+  <meta name="description" content="Formal, monochrome, enterprise-grade personal portfolio of Aulia Azmi Al Farisy - Fullstack Engineer Intern based in East Jakarta, Indonesia. Specializing in React, Node.js, PHP, Laravel, SQL, and Flutter.">
+
+  <!-- Inter Sans-Serif Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       MONOCHROME ENTERPRISE DESIGN TOKENS
+       Strict black-and-white, generous whitespace, subtle borders, high contrast.
+       ========================================================================== */
+    :root {
+      --bg: #ffffff;
+      --surface-subtle: #f9fafb;
+      --surface-hover: #f3f4f6;
+      --text-primary: #111111;
+      --text-secondary: #4b5563;
+      --text-muted: #6b7280;
+      --text-faint: #9ca3af;
+      --border: #e5e7eb;
+      --border-dark: #d1d5db;
+      --border-hover: #111111;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --transition: 0.2s ease-in-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      color: var(--text-primary);
+      background-color: var(--bg);
+    }
+
+    body {
+      font-family: var(--font);
+      line-height: 1.65;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::selection {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text-primary);
+      letter-spacing: -0.025em;
+      font-weight: 700;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* Container */
+    .container {
+      max-width: 896px; /* 4xl */
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Minimalist Card */
+    .mono-card {
+      background-color: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color var(--transition), background-color var(--transition);
+    }
+
+    .mono-card:hover {
+      border-color: #9ca3af;
+    }
+
+    /* Chips */
+    .mono-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-family: var(--font);
+      font-weight: 500;
+      color: var(--text-secondary);
+      background-color: var(--surface-hover);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.65rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      border: 1px solid #000000;
+      transition: background-color var(--transition), opacity var(--transition);
+    }
+
+    .btn-primary:hover {
+      background-color: #222222;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: #ffffff;
+      color: var(--text-primary);
+      padding: 0.65rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-dark);
+      transition: all var(--transition);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--surface-hover);
+      border-color: #9ca3af;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--surface-hover);
+      color: var(--text-secondary);
+      padding: 0.65rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .btn-secondary:hover {
+      background-color: #e5e7eb;
+      color: var(--text-primary);
+    }
+
+    /* Form Inputs */
+    .form-input {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: 0.65rem 0.85rem;
+      font-size: 0.875rem;
+      color: var(--text-primary);
+      font-family: inherit;
+      transition: border-color var(--transition);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #000000;
+      box-shadow: 0 0 0 1px #000000;
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.875rem 0;
+      transition: padding var(--transition);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .brand-badge {
+      width: 2rem;
+      height: 2rem;
+      background: #000000;
+      color: #ffffff;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-primary);
+      background-color: var(--surface-hover);
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      padding: 8rem 0 5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-kicker {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-kicker .status {
+      color: #000000;
+      font-weight: 600;
+    }
+
+    .hero-subtitle-tag {
+      font-family: monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-faint);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-typing {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      min-height: 2.25rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.5rem;
+      background: #000000;
+      margin-left: 0.35rem;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    .hero-bio {
+      font-size: 1.0625rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 44rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .metric-card {
+      padding: 1rem 1.25rem;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .metric-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       SECTION HEADERS
+       ========================================================================== */
+    .section-wrap {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-heading {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-desc {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      max-width: 36rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ==========================================================================
+       ABOUT SECTION
+       ========================================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 1.5rem;
+    }
+
+    .blockquote-mono {
+      border-left: 2px solid #000000;
+      padding-left: 1rem;
+      font-style: italic;
+      color: var(--text-primary);
+      font-size: 0.9375rem;
+      margin: 1rem 0;
+    }
+
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      padding-top: 1.25rem;
+      margin-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       EXPERIENCE TIMELINE
+       ========================================================================== */
+    .filter-tabs {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: var(--surface-hover);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      transition: all var(--transition);
+    }
+
+    .filter-btn.active {
+      background: #ffffff;
+      color: #000000;
+      font-weight: 700;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .exp-list {
+      display: flex;
+      flex-col;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .exp-role-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .exp-role {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .exp-org {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .exp-date {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    .exp-meta {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--text-faint);
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-summary {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .exp-bullets {
+      list-style-type: disc;
+      padding-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ==========================================================================
+       PROJECTS SECTION
+       ========================================================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-entry-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+      min-width: 0;
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+
+    .project-entry-card:hover {
+      border-color: #9ca3af;
+    }
+
+    .project-entry-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-entry-meta .idx {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .project-entry-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-entry-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.25rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .project-entry-bullets li {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .project-entry-bullets li::before {
+      content: "•";
+      color: #9ca3af;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .project-entry-link-wrap {
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      min-width: 0;
+      gap: 0.75rem;
+    }
+
+    .project-entry-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-family: monospace;
+      color: var(--text-primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      min-width: 0;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .project-entry-link span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .project-entry-link:hover {
+      color: #000000;
+      text-decoration-color: #000000;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      background: #ffffff;
+    }
+
+    .project-tabs {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: var(--surface-hover);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tab-btn {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      transition: all var(--transition);
+    }
+
+    .project-tab-btn.active {
+      background: #ffffff;
+      color: #000000;
+      font-weight: 700;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    /* ==========================================================================
+       CERTIFICATIONS & SKILLS
+       ========================================================================== */
+    .cert-skills-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 2rem;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      margin-bottom: 0.75rem;
+      transition: border-color var(--transition);
+    }
+
+    .cert-item:hover {
+      border-color: #9ca3af;
+    }
+
+    .cert-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .cert-meta {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .skills-group {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      background: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .skills-group-title {
+      font-family: monospace;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-faint);
+      font-weight: 700;
+      margin-bottom: 0.65rem;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    /* ==========================================================================
+       CONTACT SECTION
+       ========================================================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-grid,
+      .cert-skills-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-selector-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header>
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <div class="brand-badge">AF</div>
+        <div>
+          <div>Aulia Azmi Al Farisy</div>
+          <div style="font-size: 0.6875rem; color: var(--text-muted); font-weight: 400;">Available for Hire</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; gap: 0.5rem;">
+        <a href="#contact" class="btn-primary" style="padding: 0.45rem 0.85rem; font-size: 0.75rem;">Let's Connect</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="hero-kicker">
+        <span class="status">Open to Internships &amp; Fullstack Roles</span>
+        <span>/</span>
+        <span>He/Him</span>
+        <span>/</span>
+        <span>East Jakarta, Indonesia</span>
+      </div>
+
+      <div class="hero-subtitle-tag">Full-Stack Engineering Portfolio</div>
+      <h1 class="hero-title">Aulia Azmi Al Farisy</h1>
+
+      <div class="hero-typing">
+        <span id="typing-text">Motivated Full-Stack Developer</span>
+        <span class="typing-cursor"></span>
+      </div>
+
+      <p class="hero-bio">
+        Motivated Full-Stack Developer proficient in JavaScript, React, Node.js, and Laravel. Proven track record of building 10+ scalable web applications, from civic tech to e-commerce. Eager to leverage strong problem-solving skills to deliver impactful software solutions.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Contact Me</a>
+        <a href="#projects" class="btn-outline">View 10 Projects →</a>
+        <a href="mailto:auliaazmialfarisy@gmail.com" class="btn-secondary">auliaazmialfarisy@gmail.com</a>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-title">10+ Applications</div>
+          <div class="metric-sub">Civic Tech, E-Commerce, Payroll &amp; Portals</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-title">4 Meta Certifications</div>
+          <div class="metric-sub">Front-End, JavaScript, Version Control</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-title">Best Student Award</div>
+          <div class="metric-sub">SMK IDN Boarding School (GPA &gt; 90)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section-wrap">
+    <div class="container">
+      <div class="section-label">01 / Background</div>
+      <h2 class="section-heading">About Me</h2>
+      <p class="section-desc">Motivated Full-Stack Developer proficient in JavaScript, React, Node.js, and Laravel with a proven track record of 10+ scalable web applications.</p>
+
+      <div class="about-grid">
+        <div class="mono-card">
+          <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem;">Motivated Full-Stack Developer</h3>
+          <blockquote class="blockquote-mono">
+            "Motivated Full-Stack Developer proficient in JavaScript, React, Node.js, and Laravel. Proven track record of building 10+ scalable web applications, from civic tech to e-commerce. Eager to leverage strong problem-solving skills to deliver impactful software solutions."
+          </blockquote>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7;">
+            Currently studying software engineering at <strong>SMK IDN Boarding School</strong> (Jul 2023 - Jun 2028), specializing in full-stack web and mobile application development. Proven track record of engineering 10+ applications from concept to deployment across e-commerce, payroll automation, and civic reporting platforms.
+          </p>
+
+          <div class="checklist-grid">
+            <div class="check-item">✓ Front-End: JavaScript, React &amp; Tailwind</div>
+            <div class="check-item">✓ Back-End: Node.js, PHP &amp; Laravel</div>
+            <div class="check-item">✓ Databases: MySQL &amp; RESTful APIs</div>
+            <div class="check-item">✓ Mobile &amp; Tools: Flutter, Git &amp; GitHub</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div class="mono-card">
+            <div style="display: flex; justify-content: space-between; font-family: monospace; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+              <span>EDUCATION</span>
+              <span>Jul 2023 - Jun 2028</span>
+            </div>
+            <h3 style="font-size: 1rem; font-weight: 700;">SMK IDN Boarding School</h3>
+            <p style="font-size: 0.8125rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem;">Degree: Software Engineering Student</p>
+            <ul style="font-size: 0.75rem; color: var(--text-secondary); list-style-type: disc; padding-left: 1rem; line-height: 1.5;">
+              <li>Specialized in full-stack web and mobile application development (HTML, CSS, JS, PHP, Laravel, Flutter, MySQL).</li>
+            </ul>
+          </div>
+
+          <div class="mono-card">
+            <div style="font-family: monospace; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">LANGUAGES</div>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.8125rem;">
+              <div style="display: flex; justify-content: space-between;">
+                <strong>Bahasa Indonesia</strong>
+                <span style="font-family: monospace; color: var(--text-muted);">Native proficiency</span>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <strong>English</strong>
+                <span style="font-family: monospace; color: var(--text-muted);">Professional working proficiency</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section-wrap">
+    <div class="container">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem;">
+        <div>
+          <div class="section-label">02 / History</div>
+          <h2 class="section-heading">Work &amp; Organizational Experience</h2>
+          <p class="section-desc" style="margin-bottom: 0;">Commercial website building at PT. KOI paired with leadership and financial governance in student council.</p>
+        </div>
+
+        <div class="filter-tabs">
+          <button class="filter-btn active" onclick="filterExp('all', this)">All (4)</button>
+          <button class="filter-btn" onclick="filterExp('work', this)">Work (2)</button>
+          <button class="filter-btn" onclick="filterExp('organization', this)">Organizational (2)</button>
+        </div>
+      </div>
+
+      <div class="exp-list">
+        <!-- Exp 1: Freelance Full-Stack Developer -->
+        <div class="mono-card exp-entry" data-category="work">
+          <div class="exp-header">
+            <div class="exp-role-wrap">
+              <h3 class="exp-role">Freelance Full-Stack Developer</h3>
+              <span style="color: var(--border-dark);">·</span>
+              <span class="exp-org">Independent / Remote</span>
+              <span class="mono-tag" style="font-size: 0.6875rem;">Work</span>
+            </div>
+            <span class="exp-date">Aug 2026 - Present</span>
+          </div>
+          <div class="exp-meta">Jakarta, Indonesia</div>
+          <p class="exp-summary">Engineered 10+ full-stack web applications, including e-commerce, payroll, and civic reporting systems, from concept to deployment.</p>
+          <ul class="exp-bullets">
+            <li>Engineered 10+ full-stack web applications, including e-commerce, payroll, and civic reporting systems, from concept to deployment.</li>
+            <li>Implemented secure authentication, database management (MySQL), and responsive UI designs, consistently meeting project deadlines and client specifications.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="mono-tag">10+ Applications</span>
+            <span class="mono-tag">React &amp; Node.js</span>
+            <span class="mono-tag">MySQL</span>
+            <span class="mono-tag">Secure Auth</span>
+            <span class="mono-tag">Responsive UI</span>
+          </div>
+        </div>
+
+        <!-- Exp 2: Website Builder -->
+        <div class="mono-card exp-entry" data-category="work">
+          <div class="exp-header">
+            <div class="exp-role-wrap">
+              <h3 class="exp-role">Website Builder</h3>
+              <span style="color: var(--border-dark);">·</span>
+              <span class="exp-org">PT. Kreasi Otomasi Industri</span>
+              <span class="mono-tag" style="font-size: 0.6875rem;">Work</span>
+            </div>
+            <span class="exp-date">Jul 2023 - Jul 2026</span>
+          </div>
+          <div class="exp-meta">Jakarta, Indonesia</div>
+          <p class="exp-summary">Developed and maintained 5+ responsive, user-friendly websites tailored to client requirements using HTML, CSS, JavaScript, and PHP/Laravel.</p>
+          <ul class="exp-bullets">
+            <li>Developed and maintained 5+ responsive, user-friendly websites tailored to client requirements using HTML, CSS, JavaScript, and PHP/Laravel.</li>
+            <li>Collaborated with cross-functional teams in an Agile environment, utilizing Git/GitHub for version control, code reviews, and efficient collaborative development.</li>
+            <li>Optimized website performance and ensured cross-browser compatibility, resulting in improved user engagement and faster load times.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="mono-tag">HTML, CSS, JS</span>
+            <span class="mono-tag">PHP &amp; Laravel</span>
+            <span class="mono-tag">Agile &amp; Git</span>
+            <span class="mono-tag">Code Reviews</span>
+            <span class="mono-tag">Performance Tuning</span>
+          </div>
+        </div>
+
+        <!-- Exp 3: Treasurer -->
+        <div class="mono-card exp-entry" data-category="organization">
+          <div class="exp-header">
+            <div class="exp-role-wrap">
+              <h3 class="exp-role">Treasurer</h3>
+              <span style="color: var(--border-dark);">·</span>
+              <span class="exp-org">IDN JHS Student Council</span>
+              <span class="mono-tag" style="font-size: 0.6875rem;">Leadership</span>
+            </div>
+            <span class="exp-date">Jan 2024 - Jan 2025</span>
+          </div>
+          <div class="exp-meta">Jonggol, West Java, Indonesia</div>
+          <p class="exp-summary">Managed financial records and budgeting for 10+ student council activities, ensuring 100% transparent fund allocation and preventing budget overruns.</p>
+          <ul class="exp-bullets">
+            <li>Managed financial records and budgeting for 10+ student council activities, ensuring 100% transparent fund allocation and preventing budget overruns.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="mono-tag">10+ Activities</span>
+            <span class="mono-tag">Financial Governance</span>
+            <span class="mono-tag">100% Transparency</span>
+            <span class="mono-tag">Budget Control</span>
+          </div>
+        </div>
+
+        <!-- Exp 4: Member of Religious Department -->
+        <div class="mono-card exp-entry" data-category="organization">
+          <div class="exp-header">
+            <div class="exp-role-wrap">
+              <h3 class="exp-role">Member of Religious Department</h3>
+              <span style="color: var(--border-dark);">·</span>
+              <span class="exp-org">IDN JHS Student Council</span>
+              <span class="mono-tag" style="font-size: 0.6875rem;">Leadership</span>
+            </div>
+            <span class="exp-date">Mar 2023 - Jan 2024</span>
+          </div>
+          <div class="exp-meta">Jonggol, West Java, Indonesia</div>
+          <p class="exp-summary">Organized and coordinated 5+ large-scale religious events, enhancing community engagement and improving team collaboration among 20+ student members.</p>
+          <ul class="exp-bullets">
+            <li>Organized and coordinated 5+ large-scale religious events, enhancing community engagement and improving team collaboration among 20+ student members.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="mono-tag">5+ Events</span>
+            <span class="mono-tag">Community Engagement</span>
+            <span class="mono-tag">Team Collaboration</span>
+            <span class="mono-tag">20+ Members</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section-wrap">
+    <div class="container">
+      <div class="section-label">03 / Portfolio</div>
+      <h2 class="section-heading">Selected Projects</h2>
+      <p class="section-desc">A comprehensive catalog of 10 engineering projects spanning civic reporting platforms, e-commerce, payroll automation, smart city concepts, utility applications, and digital services.</p>
+
+      <div class="projects-grid">
+        <!-- 1. Lapor Kota -->
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">01.</span>
+              <span>Aug 2026 - Sep 2026</span>
+            </div>
+            <h3 class="project-entry-title">Lapor Kota (Civic Reporting)</h3>
+            <ul class="project-entry-bullets">
+              <li>Developed a civic engagement platform using React and Node.js, reducing simulated report resolution time by 30% through real-time tracking and geolocation mapping.</li>
+            </ul>
+          </div>
+          <div class="project-entry-link-wrap">
+            <a href="https://laporkota.up.railway.app/" target="_blank" rel="noopener noreferrer" class="project-entry-link">
+              <span>laporkota.up.railway.app</span> ↗
+            </a>
+            <span class="mono-tag" style="font-size: 0.65rem;">Live App</span>
+          </div>
+        </article>
+
+        <!-- 2. Web E-Commerce -->
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">02.</span>
+              <span>Jul 2026 - Aug 2026</span>
+            </div>
+            <h3 class="project-entry-title">Web E-Commerce</h3>
+            <ul class="project-entry-bullets">
+              <li>Engineered a responsive e-commerce platform with a dynamic catalog and cart system, improving page load speed by 25% and ensuring 100% mobile compatibility.</li>
+            </ul>
+          </div>
+          <div class="project-entry-link-wrap">
+            <a href="https://github.com/HUNNTE/webecommerce" target="_blank" rel="noopener noreferrer" class="project-entry-link">
+              <span>github.com/HUNNTE/webecommerce</span> ↗
+            </a>
+            <span class="mono-tag" style="font-size: 0.65rem;">Repository</span>
+          </div>
+        </article>
+
+        <!-- 3. Payroll Application -->
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">03.</span>
+              <span>Jun 2026 - Jul 2026</span>
+            </div>
+            <h3 class="project-entry-title">Payroll Application</h3>
+            <ul class="project-entry-bullets">
+              <li>Automated salary calculations and digital slip generation using Laravel and MySQL, reducing manual data entry errors by 90% and implementing secure Role-Based Access Control (RBAC).</li>
+            </ul>
+          </div>
+          <div class="project-entry-link-wrap">
+            <a href="https://github.com/HUNNTE/Payroll-App" target="_blank" rel="noopener noreferrer" class="project-entry-link">
+              <span>github.com/HUNNTE/Payroll-App</span> ↗
+            </a>
+            <span class="mono-tag" style="font-size: 0.65rem;">Repository</span>
+          </div>
+        </article>
+
+        <!-- 4. Yogyakarta Digital City -->
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">04.</span>
+              <span>May 2026 - Jun 2026</span>
+            </div>
+            <h3 class="project-entry-title">Yogyakarta Digital City</h3>
+            <ul class="project-entry-bullets">
+              <li>Designed and deployed a smart city portal showcasing public services, achieving a 95+ Lighthouse performance score and increasing information accessibility.</li>
+            </ul>
+          </div>
+          <div class="project-entry-link-wrap">
+            <a href="https://hunnte.github.io/yogyakartadigitalcity/" target="_blank" rel="noopener noreferrer" class="project-entry-link">
+              <span>hunnte.github.io/yogyakartadigitalcity</span> ↗
+            </a>
+            <span class="mono-tag" style="font-size: 0.65rem;">Live App</span>
+          </div>
+        </article>
+
+        <!-- 5. AeshPadd (Notepad App) -->
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">05.</span>
+              <span>Apr 2026 - May 2026</span>
+            </div>
+            <h3 class="project-entry-title">AeshPadd (Notepad App)</h3>
+            <ul class="project-entry-bullets">
+              <li>Built a lightweight browser-based notepad utilizing LocalStorage, enabling instant data retrieval and providing a seamless, zero-latency text editing experience.</li>
+            </ul>
+          </div>
+          <div class="project-entry-link-wrap">
+            <a href="https://github.com/NotepadProject/AeshPadd" target="_blank" rel="noopener noreferrer" class="project-entry-link">
+              <span>github.com/NotepadProject/AeshPadd</span> ↗
+            </a>
+            <span class="mono-tag" style="font-size: 0.65rem;">Repository</span>
+          </div>
+        </article>
+
+        <!-- 6. E-Library System -->
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">06.</span>
+              <span>Mar 2026 - Apr 2026</span>
+            </div>
+            <h3 class="project-entry-title">E-Library System</h3>
+            <ul class="project-entry-bullets">
+              <li>Created a digital library management system with advanced search filters, streamlining the book reservation process and organizing 100+ catalog entries efficiently.</li>
+            </ul>
+          </div>
+          <div class="project-entry-link-wrap">
+            <a href="https://github.com/HUNNTE/elibrary" target="_blank" rel="noopener noreferrer" class="project-entry-link">
+              <span>github.com/HUNNTE/elibrary</span> ↗
+            </a>
+            <span class="mono-tag" style="font-size: 0.65rem;">Repository</span>
+          </div>
+        </article>
+
+        <!-- 7. Company Profile Website -->
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">07.</span>
+              <span>Feb 2026 - Mar 2026</span>
+            </div>
+            <h3 class="project-entry-title">Company Profile Website</h3>
+            <ul class="project-entry-bullets">
+              <li>Developed a professional, cross-browser compatible company website, enhancing brand visibility and ensuring optimal viewing across all device sizes.</li>
+            </ul>
+          </div>
+          <div class="project-entry-link-wrap">
+            <a href="https://hunnte.github.io/Skl-2_company-website/" target="_blank" rel="noopener noreferrer" class="project-entry-link">
+              <span>hunnte.github.io/Skl-2_company-website</span> ↗
+            </a>
+            <span class="mono-tag" style="font-size: 0.65rem;">Live App</span>
+          </div>
+        </article>
+
+        <!-- 8. EcoHub App -->
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">08.</span>
+              <span>Jan 2026 - Feb 2026</span>
+            </div>
+            <h3 class="project-entry-title">EcoHub App</h3>
+            <ul class="project-entry-bullets">
+              <li>Implemented educational resources and impact-tracking tools for environmental sustainability, driving user engagement through interactive and responsive UI components.</li>
+            </ul>
+          </div>
+          <div class="project-entry-link-wrap">
+            <a href="https://github.com/HUNNTE/ecohub-app" target="_blank" rel="noopener noreferrer" class="project-entry-link">
+              <span>github.com/HUNNTE/ecohub-app</span> ↗
+            </a>
+            <span class="mono-tag" style="font-size: 0.65rem;">Repository</span>
+          </div>
+        </article>
+
+        <!-- 9. Web E-Report -->
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">09.</span>
+              <span>Dec 2025 - Jan 2026</span>
+            </div>
+            <h3 class="project-entry-title">Web E-Report</h3>
+            <ul class="project-entry-bullets">
+              <li>Streamlined organizational reporting workflows by building a digital dashboard, cutting report generation time by 40% and simplifying data entry for end-users.</li>
+            </ul>
+          </div>
+          <div class="project-entry-link-wrap">
+            <a href="https://hunnte.github.io/webereport/" target="_blank" rel="noopener noreferrer" class="project-entry-link">
+              <span>hunnte.github.io/webereport</span> ↗
+            </a>
+            <span class="mono-tag" style="font-size: 0.65rem;">Live App</span>
+          </div>
+        </article>
+
+        <!-- 10. Aurion Service Web Experience -->
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">10.</span>
+              <span>Oct 2025 - Nov 2025</span>
+            </div>
+            <h3 class="project-entry-title">Aurion Service Web Experience</h3>
+            <ul class="project-entry-bullets">
+              <li>Crafted a minimalist, performance-focused AI service website using Tailwind CSS, achieving a 98/100 performance score and delivering smooth user interactions.</li>
+            </ul>
+          </div>
+          <div class="project-entry-link-wrap">
+            <a href="https://kelompok-companyprofile.github.io/Company-profile/" target="_blank" rel="noopener noreferrer" class="project-entry-link">
+              <span>kelompok-companyprofile.github.io/Company-profile</span> ↗
+            </a>
+            <span class="mono-tag" style="font-size: 0.65rem;">Live App</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications & Skills -->
+  <section id="certifications" class="section-wrap">
+    <div class="container">
+      <div class="section-label">04 / Credentials</div>
+      <h2 class="section-heading">Certifications &amp; Top Skills</h2>
+      <p class="section-desc">Verified technical credentials from Meta alongside a battle-tested full-stack engineering and analytical problem-solving skill set.</p>
+
+      <div class="cert-skills-grid">
+        <!-- Certifications List (4) -->
+        <div>
+          <div style="display: flex; justify-content: space-between; font-family: monospace; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; font-weight: 600;">
+            <span>VERIFIED INDUSTRY CERTIFICATIONS</span>
+            <span>4 COMPLETED</span>
+          </div>
+
+          <div class="cert-item">
+            <div>
+              <div class="cert-title">HTML and CSS in depth</div>
+              <div class="cert-meta">Meta / Front-End Development / Nov 2025 / ID: CZCYCI85RU1A</div>
+            </div>
+            <span class="mono-tag">Verified</span>
+          </div>
+
+          <div class="cert-item">
+            <div>
+              <div class="cert-title">Version Control</div>
+              <div class="cert-meta">Meta / Engineering Tools &amp; Git / Nov 2025 / ID: 6HJWDDNN8IMJ</div>
+            </div>
+            <span class="mono-tag">Verified</span>
+          </div>
+
+          <div class="cert-item">
+            <div>
+              <div class="cert-title">Programming with JavaScript</div>
+              <div class="cert-meta">Meta / Programming &amp; Web Logic / Nov 2025 / ID: IJ85G86Z0PKU</div>
+            </div>
+            <span class="mono-tag">Verified</span>
+          </div>
+
+          <div class="cert-item">
+            <div>
+              <div class="cert-title">Introduction to Front-End Development</div>
+              <div class="cert-meta">Meta / Front-End Development / Oct 2025 / ID: DM991OTUTM0L</div>
+            </div>
+            <span class="mono-tag">Verified</span>
+          </div>
+        </div>
+
+        <!-- Top Skills Matrix -->
+        <div>
+          <div style="font-family: monospace; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; font-weight: 600;">
+            TOP SKILLS &amp; COMPETENCIES
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Languages &amp; Frameworks</div>
+            <div class="skills-list">
+              <span class="mono-tag">JavaScript</span>
+              <span class="mono-tag">React.js</span>
+              <span class="mono-tag">Node.js</span>
+              <span class="mono-tag">PHP</span>
+              <span class="mono-tag">Laravel</span>
+              <span class="mono-tag">Python</span>
+              <span class="mono-tag">Java</span>
+              <span class="mono-tag">Dart</span>
+              <span class="mono-tag">HTML5</span>
+              <span class="mono-tag">CSS3</span>
+              <span class="mono-tag">Tailwind CSS</span>
+              <span class="mono-tag">Flutter</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Tools &amp; Technologies</div>
+            <div class="skills-list">
+              <span class="mono-tag">Git</span>
+              <span class="mono-tag">GitHub</span>
+              <span class="mono-tag">MySQL</span>
+              <span class="mono-tag">RESTful APIs</span>
+              <span class="mono-tag">AI Integration</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Soft Skills</div>
+            <div class="skills-list">
+              <span class="mono-tag">Technical Communication</span>
+              <span class="mono-tag">Analytical Problem Solving</span>
+              <span class="mono-tag">Agile Collaboration</span>
+              <span class="mono-tag">Financial Budgeting</span>
+            </div>
+          </div>
+
+          <div class="mono-card" style="padding: 1rem; font-size: 0.75rem; color: var(--text-secondary); background: var(--surface-subtle);">
+            <strong>Continuous Growth Mindset:</strong> Eager to leverage strong problem-solving skills to deliver impactful software solutions across modern web and cloud architectures.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-wrap">
+    <div class="container">
+      <div class="section-label">05 / Contact</div>
+      <h2 class="section-heading">Get In Touch</h2>
+      <p class="section-desc">Currently open to full-stack opportunities, freelance engineering projects, and technical discussions.</p>
+
+      <div class="contact-grid">
+        <div class="mono-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+            <span style="font-family: monospace; font-size: 0.6875rem; color: var(--text-faint); font-weight: 700;">DIRECT EMAIL</span>
+            <button onclick="navigator.clipboard.writeText('auliaazmialfarisy@gmail.com'); alert('Email copied!');" class="mono-tag" style="cursor: pointer;">Copy</button>
+          </div>
+          <a href="mailto:auliaazmialfarisy@gmail.com" style="font-size: 0.9375rem; font-weight: 700; font-family: monospace;">auliaazmialfarisy@gmail.com</a>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Monitored daily. Primary channel for formal inquiries.</p>
+        </div>
+
+        <div class="mono-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+            <span style="font-family: monospace; font-size: 0.6875rem; color: var(--text-faint); font-weight: 700;">DIRECT PHONE / WHATSAPP</span>
+            <button onclick="navigator.clipboard.writeText('+6285893665546'); alert('Phone copied!');" class="mono-tag" style="cursor: pointer;">Copy</button>
+          </div>
+          <a href="tel:+6285893665546" style="font-size: 0.9375rem; font-weight: 700; font-family: monospace;">+62 858 9366 5546</a>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Available via WhatsApp or direct professional call.</p>
+        </div>
+
+        <div class="mono-card">
+          <div style="font-family: monospace; font-size: 0.6875rem; color: var(--text-faint); font-weight: 700; margin-bottom: 0.25rem;">GEOGRAPHIC BASE</div>
+          <div style="font-size: 0.875rem; font-weight: 700;">East Jakarta, Indonesia</div>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Available for local Jakarta on-site requirements or global remote timezones.</p>
+        </div>
+
+        <div class="mono-card">
+          <div style="font-family: monospace; font-size: 0.6875rem; color: var(--text-faint); font-weight: 700; margin-bottom: 0.5rem;">PROFESSIONAL PROFILES</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+            <a href="https://linkedin.com/in/auliaazmialfarisy" target="_blank" class="btn-outline" style="padding: 0.45rem 0.75rem; font-size: 0.75rem; justify-content: center;">LinkedIn</a>
+            <a href="https://github.com/HUNNTE" target="_blank" class="btn-outline" style="padding: 0.45rem 0.75rem; font-size: 0.75rem; justify-content: center;">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards Section -->
+  <section id="awards" class="section-wrap">
+    <div class="container">
+      <div class="section-label">06 / Recognition</div>
+      <h2 class="section-heading">Honors &amp; Awards</h2>
+      <p class="section-desc">Distinctions awarded for exceptional academic performance, department-topping engineering leadership, and language proficiency.</p>
+
+      <div class="projects-grid">
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">01. Distinction</span>
+              <span>Sep 2026</span>
+            </div>
+            <h3 class="project-entry-title">Best Student <span style="font-weight: 400; color: var(--text-secondary);">by</span> SMK IDN Boarding School</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Awarded for demonstrating exceptional academic performance, leadership, and active participation. Recognized as the top-performing student in the Software Engineering department for maintaining a GPA above 90.
+            </p>
+          </div>
+          <div class="project-entry-link-wrap">
+            <span class="mono-tag">GPA Above 90</span>
+            <span class="mono-tag">Top-Performing Student</span>
+          </div>
+        </article>
+
+        <article class="project-entry-card">
+          <div>
+            <div class="project-entry-meta">
+              <span class="idx">02. Distinction</span>
+              <span>Apr 2023</span>
+            </div>
+            <h3 class="project-entry-title">Best English Student <span style="font-weight: 400; color: var(--text-secondary);">by</span> SMP IDN Boarding School</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Recognized for outstanding proficiency in the English language, achieving the highest scores in speaking, writing, and comprehension assessments.
+            </p>
+          </div>
+          <div class="project-entry-link-wrap">
+            <span class="mono-tag">Highest Scores</span>
+            <span class="mono-tag">Language Proficiency</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div><strong>Aulia Azmi Al Farisy</strong> · © 2026. All rights reserved.</div>
+      <div><a href="#home" style="text-decoration: underline;">Back to Top ↑</a></div>
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript Logic -->
+  <script>
+    // 1. Typing Animation
+    const titles = ['Fullstack Engineer Intern', 'Front-End Developer', 'Back-End Developer'];
+    let tIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    const typingEl = document.getElementById('typing-text');
+
+    function typeLoop() {
+      const currentTitle = titles[tIdx];
+      if (isDeleting) {
+        typingEl.textContent = currentTitle.substring(0, charIdx - 1);
+        charIdx--;
+      } else {
+        typingEl.textContent = currentTitle.substring(0, charIdx + 1);
+        charIdx++;
+      }
+
+      let speed = isDeleting ? 40 : 80;
+
+      if (!isDeleting && charIdx === currentTitle.length) {
+        speed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        tIdx = (tIdx + 1) % titles.length;
+        speed = 300;
+      }
+
+      setTimeout(typeLoop, speed);
+    }
+    typeLoop();
+
+    // 2. Experience Filter
+    function filterExp(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.exp-entry').forEach(entry => {
+        if (cat === 'all' || entry.getAttribute('data-category') === cat) {
+          entry.style.display = 'block';
+        } else {
+          entry.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
