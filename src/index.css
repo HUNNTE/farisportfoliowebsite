@@ -125,3 +125,25 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #9ca3af;
 }
+
+/* Force full width layout */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Override all container max-width */
+.container,
+[class*="container"] {
+  max-width: 100% !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+/* Make main content sections full width */
+main,
+section {
+  max-width: 100% !important;
+}
