@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer id="main-footer" className="py-8 sm:py-10 bg-white border-t border-gray-100">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 font-mono">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 font-mono">
         <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-center sm:text-left">
           <span className="text-gray-900 font-bold text-xs">
             {PERSONAL_INFO.name}
