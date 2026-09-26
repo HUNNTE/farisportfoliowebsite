@@ -13,7 +13,7 @@ export const Experience: React.FC = () => {
 
   return (
     <section id="experience" className="py-12 sm:py-16 md:py-20 border-b border-gray-100">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
           <div>
